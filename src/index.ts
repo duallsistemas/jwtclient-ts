@@ -28,9 +28,6 @@ export function extractDataFromJSON<T>(encoded: Encoded): T {
 }
 
 export async function request<T>(configuration: Configuration, credentials: Credentials): Promise<Response<T>> {
-  if (!configuration.url) return Promise.reject('JWTCLI: missing URL');
-  if (!credentials.client_id) return Promise.reject('JWTCLI: missing client id');
-  if (!credentials.client_secret) return Promise.reject('JWTCLI: missing client secret');
   let headers: HeadersInit = { 'Content-Type': 'application/json' };
   try {
     const response = await fetch(configuration.url + (configuration.params ? '?' + configuration.params : ''), {
